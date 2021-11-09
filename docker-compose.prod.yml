@@ -22,7 +22,7 @@ services:
       - "modules:/var/www/localhost/htdocs/protected/modules"
       - "themes:/var/www/localhost/htdocs/themes"
   humhub:
-    image: docker.io/mriedmann/humhub:stable-phponly
+    image: registry.gitlab.com/timaschew/humhub-docker:1.9.2
     expose:
       - '9000'
     environment:
