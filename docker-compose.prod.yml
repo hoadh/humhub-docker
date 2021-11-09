@@ -29,7 +29,7 @@ services:
       HUMHUB_DB_USER: ${HUMHUB_DB_USER}
       HUMHUB_DB_PASSWORD: ${HUMHUB_DB_PASSWORD}
       HUMHUB_DB_HOST: 'db'
-      HUMHUB_DB_NAME: 'humhub'
+      HUMHUB_DB_NAME: ${HUMHUB_DB_NAME}
       HUMHUB_AUTO_INSTALL: 1
       # HUMHUB_DEBUG: 1 # you can currently not use debug in prod 
       HUMHUB_PROTO: 'https'
@@ -56,7 +56,7 @@ services:
       - "assets:/var/www/localhost/htdocs/assets"
       - "modules:/var/www/localhost/htdocs/protected/modules"
       - "themes:/var/www/localhost/htdocs/themes"
-#     - "${HUMHUB_VOLUME_CONFIG}:/var/www/localhost/htdocs/protected/config"
+      - "${HUMHUB_VOLUME_CONFIG}:/var/www/localhost/htdocs/protected/config"
     healthcheck:
       test: ["CMD", "php-fpm-healthcheck"]
       interval: 30s
@@ -66,7 +66,7 @@ services:
     image: mariadb:10.4
     environment:
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MYSQL_DATABASE: 'humhub'
+      MYSQL_DATABASE: ${HUMHUB_DB_NAME}
       MYSQL_USER: ${HUMHUB_DB_USER}
       MYSQL_PASSWORD: ${HUMHUB_DB_PASSWORD}
     healthcheck:
